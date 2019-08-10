@@ -8,7 +8,7 @@ branches:
   - master
 before_script:
   - npm install yaspeller -g
-  - cargo install mdbook
+  - cargo install mdbook || true
 script:
   - yaspeller -c common-configs/.yaspellerrc --only-errors rust-by-example-ru/src/**/*.md
   - mdbook build rust-by-example-ru
