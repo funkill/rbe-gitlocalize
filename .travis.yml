@@ -1,0 +1,16 @@
+sudo: false
+language: rust
+cache: cargo
+rust:
+  - nightly
+branches:
+  only:
+  - master
+before_script:
+  - npm install yaspeller -g
+  - cargo install mdbook --force || true
+script:
+  - cd rust-by-exmaple-ru
+  - yaspeller -c ../common-configs/.yaspellerrc --only-errors src/**/*.md
+  - mdbook build
+  - mdbook test
